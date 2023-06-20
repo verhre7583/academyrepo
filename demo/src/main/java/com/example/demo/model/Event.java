@@ -1,6 +1,8 @@
 package com.example.demo.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name= "event")
@@ -15,6 +17,9 @@ public class Event {
     private int count;
     @Column(name="maxPeople")
     private int maxPeopleCount;
+
+    @ManyToMany(mappedBy = "eventSet")
+    private Set<Users> usersList = new HashSet<>();
 
     public String getPlace() {
         return place;
